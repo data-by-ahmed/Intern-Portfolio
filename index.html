@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Wael | Data Analyst Portfolio</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="analytics-favicon.png">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-accent: #0ea5e9;
+            --secondary-accent: #6366f1;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Custom Navbar */
+        .navbar {
+            background: rgba(15, 23, 42, 0.9) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-accent) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--primary-accent);
+            min-height: 40px; 
+        }
+
+        /* Upgraded Image Styling */
+        .profile-img-wrapper {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px; /* Thickness of the gradient border */
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 15px 35px rgba(14, 165, 233, 0.2);
+            transition: all 0.5s ease;
+        }
+
+        .profile-img-wrapper:hover {
+            box-shadow: 0 20px 45px rgba(99, 102, 241, 0.4);
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid var(--dark-bg); /* Inner border to separate image from gradient */
+            z-index: 2;
+            transition: transform 0.5s ease;
+        }
+
+        .profile-img-wrapper:hover .profile-img {
+            transform: scale(1.05); /* Slight zoom effect on the image itself */
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Section Titles */
+        .section-heading {
+            font-weight: 700;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background: var(--primary-accent);
+            bottom: -10px;
+            left: 25%;
+            border-radius: 2px;
+        }
+
+        /* Custom Cards */
+        .custom-card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 15px;
+            height: 100%;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-accent);
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.15);
+        }
+
+        .icon-box {
+            font-size: 2.5rem;
+            color: var(--primary-accent);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Badges */
+        .badge-tech {
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--primary-accent);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            font-weight: 500;
+            padding: 0.5em 0.8em;
+            margin: 0.2em;
+        }
+
+        /* Timeline */
+        .timeline-item {
+            border-left: 3px solid var(--primary-accent);
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -11px;
+            top: 0;
+            width: 19px;
+            height: 19px;
+            background: var(--dark-bg);
+            border: 3px solid var(--primary-accent);
+            border-radius: 50%;
+        }
+
+        /* Upgraded Footer Social Links */
+        .footer-social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: #94a3b8;
+            font-size: 1.3rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-social-link:hover {
+            color: #fff;
+            background: var(--primary-accent);
+            border-color: var(--primary-accent);
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.4);
+        }
+
+        /* JS Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Buttons */
+        .btn-custom {
+            background-color: var(--primary-accent);
+            color: #fff;
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-weight: 600;
+            border: 2px solid var(--primary-accent);
+            transition: all 0.3s;
+        }
+        .btn-custom:hover {
+            background-color: transparent;
+            color: var(--primary-accent);
+        }
+        .btn-outline-custom {
+            background-color: transparent;
+            color: var(--primary-accent);
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-weight: 600;
+            border: 2px solid var(--primary-accent);
+            transition: all 0.3s;
+        }
+        .btn-outline-custom:hover {
+            background-color: var(--primary-accent);
+            color: #fff;
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="100">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">AHMED WAEL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-3">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section container">
+        <div class="row align-items-center w-100">
+            <div class="col-lg-6 mb-5 mb-lg-0 reveal-left">
+                <h1 class="hero-title mb-3">Turning Data into <br> <span class="text-primary">Decisions.</span></h1>
+                <h2 class="hero-subtitle mb-4" id="typewriter"></h2>
+                <p class="lead text-secondary mb-5">
+                    B.S. Computer Science student transforming raw datasets into actionable narratives using Python, Power BI, and Machine Learning.
+                </p>
+                <div class="d-flex gap-3">
+                    <a href="mailto:contactahmedwael@gmail.com" class="btn btn-custom shadow"><i class="fas fa-paper-plane me-2"></i>Hire Me</a>
+                    <a href="#projects" class="btn btn-outline-custom"><i class="fas fa-project-diagram me-2"></i>My Work</a>
+                </div>
+            </div>
+            <!-- Upgraded Profile Image Implementation -->
+            <div class="col-lg-6 text-center reveal-right">
+                <div class="profile-img-wrapper">
+                    <img src="WhatsApp Image 2026-07-13 at 10.18.54 AM.jpeg" alt="Ahmed Wael" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5 mt-5">
+        <div class="container">
+            <div class="text-center reveal">
+                <h2 class="section-heading">Technical Arsenal</h2>
+            </div>
+            <div class="row g-4 mt-4">
+                <div class="col-md-6 col-lg-3 reveal" style="transition-delay: 100ms;">
+                    <div class="custom-card p-4 text-center shadow-sm">
+                        <i class="fas fa-database icon-box"></i>
+                        <h4 class="mb-3">Data Engineering</h4>
+                        <span class="badge rounded-pill badge-tech">Python</span>
+                        <span class="badge rounded-pill badge-tech">SQL</span>
+                        <span class="badge rounded-pill badge-tech">DAX</span>
+                        <span class="badge rounded-pill badge-tech">Git</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 reveal" style="transition-delay: 200ms;">
+                    <div class="custom-card p-4 text-center shadow-sm">
+                        <i class="fas fa-brain icon-box"></i>
+                        <h4 class="mb-3">Data Science</h4>
+                        <span class="badge rounded-pill badge-tech">Pandas</span>
+                        <span class="badge rounded-pill badge-tech">NumPy</span>
+                        <span class="badge rounded-pill badge-tech">Scikit-Learn</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 reveal" style="transition-delay: 300ms;">
+                    <div class="custom-card p-4 text-center shadow-sm">
+                        <i class="fas fa-chart-pie icon-box"></i>
+                        <h4 class="mb-3">Visualization</h4>
+                        <span class="badge rounded-pill badge-tech">Power BI</span>
+                        <span class="badge rounded-pill badge-tech">Tableau</span>
+                        <span class="badge rounded-pill badge-tech">Matplotlib</span>
+                        <span class="badge rounded-pill badge-tech">Seaborn</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 reveal" style="transition-delay: 400ms;">
+                    <div class="custom-card p-4 text-center shadow-sm">
+                        <i class="fas fa-lightbulb icon-box"></i>
+                        <h4 class="mb-3">Core Skills</h4>
+                        <span class="badge rounded-pill badge-tech">Data Storytelling</span>
+                        <span class="badge rounded-pill badge-tech">Problem Solving</span>
+                        <span class="badge rounded-pill badge-tech">Data Modeling</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5 mt-5 bg-black bg-opacity-25">
+        <div class="container py-4">
+            <div class="text-center reveal">
+                <h2 class="section-heading">Featured Projects</h2>
+            </div>
+            
+            <div class="row g-5 mt-3">
+                <div class="col-lg-4 reveal" style="transition-delay: 100ms;">
+                    <div class="custom-card p-4 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h3 class="h4 mb-0">Superstore Sales Dashboard</h3>
+                            <i class="fas fa-chart-line fs-3 text-primary"></i>
+                        </div>
+                        <div class="mb-3">
+                            <span class="badge rounded-pill badge-tech">Power BI</span>
+                            <span class="badge rounded-pill badge-tech">DAX</span>
+                            <span class="badge rounded-pill badge-tech">Data Modeling</span>
+                        </div>
+                        <ul class="text-secondary ps-3 mb-0 flex-grow-1">
+                            <li class="mb-2">Developed an interactive dashboard visualizing over $2.33M in sales and $292K in profit.</li>
+                            <li class="mb-2">Calculated complex YoY growth metrics using advanced DAX, highlighting a 48.8% profit increase.</li>
+                            <li>Engineered geospatial maps and time-series trends to empower stakeholders.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 reveal" style="transition-delay: 200ms;">
+                    <div class="custom-card p-4 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h3 class="h4 mb-0">SIGMA Tech Market Analysis</h3>
+                            <i class="fas fa-laptop-code fs-3 text-primary"></i>
+                        </div>
+                        <div class="mb-3">
+                            <span class="badge rounded-pill badge-tech">Power BI</span>
+                            <span class="badge rounded-pill badge-tech">DAX</span>
+                        </div>
+                        <ul class="text-secondary ps-3 mb-0 flex-grow-1">
+                            <li class="mb-2">Processed and structured raw data for 1,262 laptop models, categorizing complex hardware specs.</li>
+                            <li class="mb-2">Visualized over $76.1M in sales volume using custom DAX for dynamic pricing tiers.</li>
+                            <li>Revealed a 65.4% SSD dominance via interactive distribution charts and heatmaps.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 reveal" style="transition-delay: 300ms;">
+                    <div class="custom-card p-4 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h3 class="h4 mb-0">Diabetes Risk Predictor</h3>
+                            <i class="fas fa-stethoscope fs-3 text-primary"></i>
+                        </div>
+                        <div class="mb-3">
+                            <span class="badge rounded-pill badge-tech">Python</span>
+                            <span class="badge rounded-pill badge-tech">Scikit-Learn</span>
+                            <span class="badge rounded-pill badge-tech">Streamlit</span>
+                        </div>
+                        <ul class="text-secondary ps-3 mb-0 flex-grow-1">
+                            <li class="mb-2">Built an ML classification model using Jupyter to evaluate clinical data for diabetes risk.</li>
+                            <li class="mb-2">Deployed a real-time interactive web application via Streamlit for seamless user input.</li>
+                            <li>Optimized model performance through robust feature engineering and normalization of health data.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education -->
+    <section id="experience" class="py-5 mt-5 mb-5">
+        <div class="container">
+            <div class="text-center reveal">
+                <h2 class="section-heading">Journey</h2>
+            </div>
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-8">
+                    <div class="timeline-item reveal">
+                        <h5 class="text-primary fw-bold mb-1">Nov 2025 - Mar 2026</h5>
+                        <h4 class="mb-1">Data Analysis and Visualization Trainee</h4>
+                        <p class="text-white-50 mb-2"><i class="fas fa-map-marker-alt me-2"></i>Skills Dynamix | Alexandria, Egypt</p>
+                        <p class="text-secondary">Completed comprehensive training on data cleaning, processing, and visual storytelling. Applied analytical techniques to real-world datasets utilizing industry-standard tools to extract actionable business insights.</p>
+                    </div>
+                    
+                    <div class="timeline-item reveal" style="transition-delay: 200ms;">
+                        <h5 class="text-primary fw-bold mb-1">Expected: June 2028</h5>
+                        <h4 class="mb-1">B.S. in Computer Science (SIM Dept.)</h4>
+                        <p class="text-white-50 mb-2"><i class="fas fa-university me-2"></i>Faculty of Science | Alexandria, Egypt</p>
+                        <p class="text-secondary"><strong>Key Coursework:</strong> Data Structures, Database Management, Statistics, Machine Learning, Data Visualization.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upgraded Footer -->
+    <footer class="bg-black py-5 border-top border-secondary border-opacity-25">
+        <div class="container text-center">
+            <h4 class="mb-4 text-white">Let's Connect</h4>
+            <div class="d-flex justify-content-center gap-4 mb-4">
+                <a href="https://linkedin.com/in/ahmed-wael-a37546401" target="_blank" class="footer-social-link" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/data-by-ahmed" target="_blank" class="footer-social-link" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:contactahmedwael@gmail.com" class="footer-social-link" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <p class="text-secondary mb-0 small">&copy; 2026 Ahmed Wael. Powered by Bootstrap & JavaScript.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS Animations -->
+    <script>
+        // Typewriter Effect
+        const phrases = ["Aspiring Data Analyst.", "Power BI Specialist.", "Machine Learning Enthusiast."];
+        let i = 0;
+        let j = 0;
+        let currentPhrase = [];
+        let isDeleting = false;
+        let isEnd = false;
+        const textDisplay = document.getElementById('typewriter');
+
+        function loop() {
+            isEnd = false;
+            textDisplay.innerHTML = currentPhrase.join('') + '<span style="border-right: 2px solid #0ea5e9; animation: blink 0.75s step-end infinite;">&nbsp;</span>';
+
+            if (i < phrases.length) {
+                if (!isDeleting && j <= phrases[i].length) {
+                    currentPhrase.push(phrases[i][j]);
+                    j++;
+                    textDisplay.innerHTML = currentPhrase.join('') + '<span style="border-right: 2px solid #0ea5e9; animation: blink 0.75s step-end infinite;">&nbsp;</span>';
+                }
+
+                if (isDeleting && j <= phrases[i].length) {
+                    currentPhrase.pop(phrases[i][j]);
+                    j--;
+                    textDisplay.innerHTML = currentPhrase.join('') + '<span style="border-right: 2px solid #0ea5e9; animation: blink 0.75s step-end infinite;">&nbsp;</span>';
+                }
+
+                if (j == phrases[i].length) {
+                    isEnd = true;
+                    isDeleting = true;
+                }
+
+                if (isDeleting && j === 0) {
+                    currentPhrase = [];
+                    isDeleting = false;
+                    i++;
+                    if (i === phrases.length) { i = 0; }
+                }
+            }
+            const spedUp = Math.random() * (80 - 50) + 50;
+            const normalSpeed = Math.random() * (150 - 100) + 100;
+            const time = isEnd ? 2000 : isDeleting ? spedUp : normalSpeed;
+            setTimeout(loop, time);
+        }
+        
+        document.head.insertAdjacentHTML("beforeend", `<style>@keyframes blink { 50% { border-color: transparent; } }</style>`);
+        document.addEventListener("DOMContentLoaded", loop);
+
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
+            
+            var observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            reveals.forEach((element) => {
+                observer.observe(element);
+            });
+        }
+        
+        window.addEventListener("load", reveal);
+        
+        // Navbar scroll effect
+        window.addEventListener("scroll", function() {
+            var navbar = document.querySelector(".navbar");
+            if (window.scrollY > 50) {
+                navbar.style.background = "rgba(15, 23, 42, 0.98)!important";
+                navbar.classList.add("shadow");
+            } else {
+                navbar.style.background = "rgba(15, 23, 42, 0.9)!important";
+                navbar.classList.remove("shadow");
+            }
+        });
+    </script>
+</body>
+</html>
